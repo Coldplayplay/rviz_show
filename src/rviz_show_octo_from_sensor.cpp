@@ -78,10 +78,6 @@ void pclsubCallback(const sensor_msgs::PointCloud2& msg)
         cout <<"after VoxelGrid filtering,"
              << cloud_voxelf->width * cloud_voxelf->height<< " data points." << std::endl;
 
-
-
-
-
         cout<<"copy data into octomap..."<<endl;
  
         // 创建带颜色的八叉树对象，参数为分辨率，这里设成了0.05
