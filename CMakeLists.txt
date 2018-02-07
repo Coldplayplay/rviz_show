@@ -30,11 +30,13 @@ include_directories(
  include
   ${catkin_INCLUDE_DIRS}
   ${PCL_INCLUDE_DIRS}
+  ${OpenCV_INCLUDE_DIRS}
   ${OCTOMAP_INCLUDE_DIRS}
 )
 
 link_directories(${PCL_LIBRARY_DIRS})
 link_directories(${OCTOMAP_LIBRARY_DIRS})
+link_directories(${OpenCV_LIBRARY_DIRS})
 
 
 #add_executable(rviz_show_pcd src/rviz_show_pcd.cpp)
@@ -62,4 +64,8 @@ add_dependencies(pub_scene_from_bt ${PROJECT_NAME}_gencpp)
 add_executable(pub_scene_from_pcd src/pub_PlanningScene_from_pcd.cpp)
 target_link_libraries(pub_scene_from_pcd ${catkin_LIBRARIES} ${PCL_LIBRARIES} ${OCTOMAP_LIBRARIES})
 add_dependencies(pub_scene_from_pcd ${PROJECT_NAME}_gencpp)
+
+add_executable(pub_tcp src/sendPose.cpp)
+target_link_libraries(pub_tcp ${catkin_LIBRARIES} ${PCL_LIBRARIES} ${OCTOMAP_LIBRARIES} ${OpenCV_LIBRARIES})
+add_dependencies(pub_tcp ${PROJECT_NAME}_gencpp)
 
